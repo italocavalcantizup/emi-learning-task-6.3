@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3EA3B463291545F1007EC742 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA3B462291545F1007EC742 /* Session.swift */; };
+		3EA3B4652915468D007EC742 /* Sessions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA3B4642915468D007EC742 /* Sessions.swift */; };
+		3EA3B467291546B9007EC742 /* Cinema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA3B466291546B9007EC742 /* Cinema.swift */; };
+		3EA3B46929154C18007EC742 /* SessionsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA3B46829154C18007EC742 /* SessionsViewCell.swift */; };
 		5859921B28084E800059475F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5859921A28084E800059475F /* AppDelegate.swift */; };
 		5859921D28084E800059475F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5859921C28084E800059475F /* SceneDelegate.swift */; };
-		5859921F28084E800059475F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5859921E28084E800059475F /* ViewController.swift */; };
+		5859921F28084E800059475F /* SessionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5859921E28084E800059475F /* SessionsViewController.swift */; };
 		5859922228084E800059475F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5859922028084E800059475F /* Main.storyboard */; };
 		5859922428084E820059475F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5859922328084E820059475F /* Assets.xcassets */; };
 		5859922728084E820059475F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5859922528084E820059475F /* LaunchScreen.storyboard */; };
@@ -22,10 +26,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3EA3B462291545F1007EC742 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		3EA3B4642915468D007EC742 /* Sessions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sessions.swift; sourceTree = "<group>"; };
+		3EA3B466291546B9007EC742 /* Cinema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cinema.swift; sourceTree = "<group>"; };
+		3EA3B46829154C18007EC742 /* SessionsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsViewCell.swift; sourceTree = "<group>"; };
 		5859921728084E800059475F /* LearningTask-6.3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LearningTask-6.3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5859921A28084E800059475F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5859921C28084E800059475F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5859921E28084E800059475F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5859921E28084E800059475F /* SessionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsViewController.swift; sourceTree = "<group>"; };
 		5859922128084E800059475F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5859922328084E820059475F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5859922628084E820059475F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +57,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3EA3B45D2915414A007EC742 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5859923028099C350059475F /* Movie.swift */,
+				3EA3B462291545F1007EC742 /* Session.swift */,
+				3EA3B4642915468D007EC742 /* Sessions.swift */,
+				3EA3B466291546B9007EC742 /* Cinema.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3EA3B45E29154151007EC742 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				3EA3B460291541D6007EC742 /* MovieSessions */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		3EA3B45F29154157007EC742 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5859922028084E800059475F /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3EA3B460291541D6007EC742 /* MovieSessions */ = {
+			isa = PBXGroup;
+			children = (
+				5859921E28084E800059475F /* SessionsViewController.swift */,
+				3EA3B461291541E0007EC742 /* View */,
+			);
+			path = MovieSessions;
+			sourceTree = "<group>";
+		};
+		3EA3B461291541E0007EC742 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5859922E280876310059475F /* TableHeaderView.swift */,
+				585992352809AC220059475F /* TableSectionHeaderView.swift */,
+				3EA3B46829154C18007EC742 /* SessionsViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		5859920E28084E800059475F = {
 			isa = PBXGroup;
 			children = (
@@ -72,11 +126,9 @@
 				5859922328084E820059475F /* Assets.xcassets */,
 				58599241280A2D090059475F /* Common */,
 				5859923C2809D0980059475F /* API */,
-				5859923028099C350059475F /* Movie.swift */,
-				5859922028084E800059475F /* Main.storyboard */,
-				5859921E28084E800059475F /* ViewController.swift */,
-				5859922E280876310059475F /* TableHeaderView.swift */,
-				585992352809AC220059475F /* TableSectionHeaderView.swift */,
+				3EA3B45D2915414A007EC742 /* Models */,
+				3EA3B45F29154157007EC742 /* Views */,
+				3EA3B45E29154151007EC742 /* Scenes */,
 			);
 			path = "LearningTask-6.3";
 			sourceTree = "<group>";
@@ -188,9 +240,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EA3B467291546B9007EC742 /* Cinema.swift in Sources */,
+				3EA3B46929154C18007EC742 /* SessionsViewCell.swift in Sources */,
+				3EA3B463291545F1007EC742 /* Session.swift in Sources */,
 				58599245280A2DF70059475F /* TimeInterval+DateComponentsFormatter.swift in Sources */,
 				5859922F280876310059475F /* TableHeaderView.swift in Sources */,
-				5859921F28084E800059475F /* ViewController.swift in Sources */,
+				3EA3B4652915468D007EC742 /* Sessions.swift in Sources */,
+				5859921F28084E800059475F /* SessionsViewController.swift in Sources */,
 				585992362809AC220059475F /* TableSectionHeaderView.swift in Sources */,
 				5859921B28084E800059475F /* AppDelegate.swift in Sources */,
 				5859923E2809D0A90059475F /* MovieSessionsAPI.swift in Sources */,

@@ -1,7 +1,21 @@
 
 import UIKit
 
-class TableSectionHeaderView { // : ?
+class TableSectionHeaderView: UITableViewHeaderFooterView {
+    
+    static var heightConstante: CGFloat = 48
+    static var reuseId: String {
+        return String(describing: self) // Reuse Identifier
+    }
+    
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
+        setup()
+    }
+    
+    required init(coder: NSCoder) {
+        fatalError("init(coder: has not been implemented)")
+    }
     
     // MARK: - subviews
     private lazy var iconImageView: UIImageView = {
@@ -41,6 +55,19 @@ class TableSectionHeaderView { // : ?
         return stack
     }()
     
-    // ?
+    private func setup() {
+        addViews()
+    }
+    
+    func setup(_ cinema: Cinema) {
+        label.text = cinema.name
+        iconImageView.image = UIImage(named: "Heart")
+    }
+    
+    func addViews() {
+        addSubview(containerStackView)
+        addSubview(iconImageView)
+        addSubview(label)
+    }
 
 }
