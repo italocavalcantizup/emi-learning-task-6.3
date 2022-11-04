@@ -57,17 +57,29 @@ class TableSectionHeaderView: UITableViewHeaderFooterView {
     
     private func setup() {
         addViews()
+        addConstraints()
+    }
+    
+    private func addViews() {
+        addSubview(containerStackView)
     }
     
     func setup(_ cinema: Cinema) {
         label.text = cinema.name
-        iconImageView.image = UIImage(named: "Heart")
     }
     
-    func addViews() {
-        addSubview(containerStackView)
-        addSubview(iconImageView)
-        addSubview(label)
+    private func addConstraints() {
+        NSLayoutConstraint.activate([
+            heightAnchor.constraint(equalToConstant: Self.heightConstante)
+        ])
+        
+        NSLayoutConstraint.activate([
+            containerStackView.topAnchor.constraint(equalTo: topAnchor),
+            containerStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            containerStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            containerStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+        ])
     }
+
 
 }

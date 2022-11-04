@@ -27,8 +27,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let controller = window!.rootViewController as? SessionsViewController
         
+        controller?.sessions = movieSessionsAPI.getSessionBy(selectedMovie)
         controller?.selectedMovie = selectedMovie
-        controller?.movieSessionsAPI = movieSessionsAPI
         
     }
 

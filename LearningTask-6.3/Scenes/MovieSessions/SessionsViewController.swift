@@ -9,9 +9,9 @@ import UIKit
 
 class SessionsViewController: UITableViewController {
     
-    var movieSessionsAPI: MovieSessionsAPI? {
+    var sessions: [Sessions]? {
         didSet {
-            guard isViewLoaded, let _ = movieSessionsAPI else { return }
+            guard isViewLoaded, let _ = sessions else { return }
         }
     }
     
@@ -28,17 +28,19 @@ class SessionsViewController: UITableViewController {
         if let selectedMovie = selectedMovie {
             tableView.tableHeaderView = TableHeaderView.build(from: selectedMovie)
         }
+        configurarHeaderSection()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return sessions?[section].commingSessions.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SessionCell", for: indexPath) as? SessionsViewCell else {
             fatalError("Não foi possível obter célula para a lista de sessões")
         }
-        cell.setup()
+        let session = sessions![indexPath.section].commingSessions[indexPath.row]
+        cell.setup(session)
         return cell
     }
     
@@ -46,14 +48,22 @@ class SessionsViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: TableSectionHeaderView.reuseId) as? TableSectionHeaderView else {
-//            fatalError("Não foi possível obter o header view para a tabela.")
-//        }
-//        let cinema = movieSessionsAPI!.getSessionBy(selectedMovie)[section].by
-//        header.setup(cinema)
-//        return header
-//    }
-  
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return sessions?.count ?? 0
+    }
     
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: TableSectionHeaderView.reuseId) as? TableSectionHeaderView else {
+            fatalError("Não foi possível obter célula para a lista de sessões")
+        }
+        let cinema = sessions![section].by
+        header.setup(cinema)
+        return header
+    }
+    
+    func configurarHeaderSection() {
+        tableView.register(TableSectionHeaderView.self, forHeaderFooterViewReuseIdentifier: TableSectionHeaderView.reuseId)
+        tableView.sectionHeaderHeight = TableSectionHeaderView.heightConstante
+    }
+  
 }
