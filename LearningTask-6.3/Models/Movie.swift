@@ -17,7 +17,7 @@ struct Movie {
     var publicScore: Int
     
     var duration: TimeInterval {
-        return durationInMinutes
+        return durationInMinutes * 60
     }
     
     init(backgroundImage: String, posterImage: String, title: String, rating: MovieRating, durationInMinutes: TimeInterval, criticsScore: Int, publicScore: Int) {

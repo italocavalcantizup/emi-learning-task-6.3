@@ -7,63 +7,73 @@
 
 import UIKit
 
-class SessionsViewController: UITableViewController {
+class SessionsViewController: UIViewController {
     
-    var sessions: [Sessions]? {
+    @IBOutlet weak var tableView: UITableView!
+    
+    var selectedMovie: Movie!
+    
+    var API: MovieSessionsAPI?
+
+    var sessions: [Sessions] = [] {
         didSet {
-            guard isViewLoaded, let _ = sessions else { return }
+            tableView.reloadData()
         }
     }
-    
-    var selectedMovie: Movie! {
-        didSet {
-            guard isViewLoaded, let selectedMovie = selectedMovie else { return }
-            tableView.tableHeaderView = TableHeaderView.build(from: selectedMovie)
-        }
-    }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViews()
+        loadAPI()
+    }
+    
+    func setupViews() {
+        tableView.tableHeaderView = TableHeaderView.build(from: selectedMovie)
+        tableView.register(TableSectionHeaderView.self, forHeaderFooterViewReuseIdentifier: TableSectionHeaderView.reuseId)
+        tableView.sectionHeaderHeight = TableSectionHeaderView.heightConstante
         
-        if let selectedMovie = selectedMovie {
-            tableView.tableHeaderView = TableHeaderView.build(from: selectedMovie)
-        }
-        configurarHeaderSection()
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sessions?[section].commingSessions.count ?? 0
+    func loadAPI() {
+        guard let API = API else { return }
+        sessions = API.getSessionBy(selectedMovie)
     }
+}
+
+extension SessionsViewController: UITableViewDelegate {
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SessionCell", for: indexPath) as? SessionsViewCell else {
-            fatalError("Não foi possível obter célula para a lista de sessões")
-        }
-        let session = sessions![indexPath.section].commingSessions[indexPath.row]
-        cell.setup(session)
-        return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return sessions?.count ?? 0
-    }
-    
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: TableSectionHeaderView.reuseId) as? TableSectionHeaderView else {
             fatalError("Não foi possível obter célula para a lista de sessões")
         }
-        let cinema = sessions![section].by
+        let cinema = sessions[section].by
         header.setup(cinema)
         return header
     }
+}
+
+extension SessionsViewController: UITableViewDataSource {
     
-    func configurarHeaderSection() {
-        tableView.register(TableSectionHeaderView.self, forHeaderFooterViewReuseIdentifier: TableSectionHeaderView.reuseId)
-        tableView.sectionHeaderHeight = TableSectionHeaderView.heightConstante
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sessions.count
     }
-  
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return sessions[section].commingSessions.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SessionCell", for: indexPath) as? SessionsViewCell else {
+            fatalError("Não foi possível obter célula para a lista de sessões")
+        }
+        let session = sessions[indexPath.section].commingSessions[indexPath.row]
+        cell.setup(session)
+        return cell
+    }
 }
