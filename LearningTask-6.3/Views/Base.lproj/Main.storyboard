@@ -62,7 +62,7 @@
                         </stackView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SessionCell" id="iKU-PE-TaR" userLabel="SessionCell" customClass="SessionsViewCell" customModule="LearningTask_6_3" customModuleProvider="target">
-                                <rect key="frame" x="20" y="903.5" width="374" height="48.5"/>
+                                <rect key="frame" x="20" y="865.5" width="374" height="48.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iKU-PE-TaR" id="547-wW-L0G">
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="48.5"/>
