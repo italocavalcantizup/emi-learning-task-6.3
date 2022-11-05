@@ -23,12 +23,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                   title: "Doutor Estranho no Multiverso da Loucura",
                                   rating: .notRecommendedUnder14, durationInMinutes: 126,
                                   criticsScore: 93, publicScore: 98)
-        let movieSessionsAPI = MovieSessionsAPI()
+        let API = MovieSessionsAPI()
         
-        let controller = window!.rootViewController as? SessionsViewController
-        
-        controller?.sessions = movieSessionsAPI.getSessionBy(selectedMovie)
-        controller?.selectedMovie = selectedMovie
+        let controller = window!.rootViewController as! SessionsViewController
+        controller.API = API
+        controller.selectedMovie = selectedMovie
         
     }
 
