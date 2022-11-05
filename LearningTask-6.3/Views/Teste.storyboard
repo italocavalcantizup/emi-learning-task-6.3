@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Sessions View Controller-->
+        <!--Movies View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="SessionsViewController" customModule="LearningTask_6_3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MoviesViewController" customModule="LearningTask_6_3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,17 +21,17 @@
                                 <rect key="frame" x="0.0" y="48" width="414" height="848"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bc9-Mu-LF5" userLabel="Header Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="162"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="141"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="mYx-OH-qit" userLabel="Logo Image View">
-                                                <rect key="frame" x="16" y="60" width="42" height="42"/>
+                                                <rect key="frame" x="16" y="49.5" width="42" height="42"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="42" id="IY2-xX-HbW"/>
                                                     <constraint firstAttribute="width" constant="42" id="n7c-uZ-NUf"/>
                                                 </constraints>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="0GI-bx-Yak" userLabel="Location Stack View">
-                                                <rect key="frame" x="157.5" y="65" width="104" height="32"/>
+                                                <rect key="frame" x="157.5" y="54.5" width="104" height="32"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LocationPin" translatesAutoresizingMaskIntoConstraints="NO" id="kcf-iw-Lth" userLabel="Location Icon Image View">
                                                         <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
@@ -50,7 +50,7 @@
                                                 </subviews>
                                             </stackView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Account" translatesAutoresizingMaskIntoConstraints="NO" id="4BR-t4-XLJ" userLabel="Account Image View">
-                                                <rect key="frame" x="366" y="69" width="32" height="24"/>
+                                                <rect key="frame" x="366" y="58.5" width="32" height="24"/>
                                                 <color key="tintColor" systemColor="secondaryLabelColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="32" id="Ve8-X4-33C"/>
@@ -61,54 +61,65 @@
                                         <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                         <directionalEdgeInsets key="directionalLayoutMargins" top="12" leading="16" bottom="12" trailing="16"/>
                                     </stackView>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="SEh-jU-oO7">
-                                        <rect key="frame" x="0.0" y="162" width="414" height="686"/>
-                                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="hQR-3e-glc">
+                                        <rect key="frame" x="0.0" y="141" width="414" height="707"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SessionCell" id="kfw-iG-Wv9" userLabel="Session Cell" customClass="SessionsViewCell" customModule="LearningTask_6_3" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SessionCell" id="mmh-xO-cDF" customClass="SessionTableViewCell" customModule="LearningTask_6_3" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="55.5" width="374" height="48.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kfw-iG-Wv9" id="Jvy-C4-IWu">
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mmh-xO-cDF" id="LgQ-w8-0Uu">
                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="48.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="J2z-E0-zq9" userLabel="Session Stack View">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="3O5-Wx-V7r" userLabel="Container Stack View">
                                                             <rect key="frame" x="0.0" y="0.0" width="374" height="48.5"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Film" translatesAutoresizingMaskIntoConstraints="NO" id="jpi-2u-sgV" userLabel="Session Icon Image View">
-                                                                    <rect key="frame" x="12" y="12" width="24" height="24.5"/>
-                                                                    <color key="tintColor" systemColor="secondaryLabelColor"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="24" id="6Qe-lo-lJG"/>
-                                                                        <constraint firstAttribute="width" constant="24" id="aba-2u-vQy"/>
-                                                                    </constraints>
-                                                                </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="18:15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63P-TW-WMN" userLabel="Hour Label">
-                                                                    <rect key="frame" x="48" y="12" width="229.5" height="24.5"/>
-                                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Legendado" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMG-EW-9FX" userLabel="Session Type Label">
-                                                                    <rect key="frame" x="289.5" y="12" width="72.5" height="24.5"/>
-                                                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
-                                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="nf3-O6-r74" userLabel="Time Stack View">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="84.5" height="48.5"/>
+                                                                    <subviews>
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Film" translatesAutoresizingMaskIntoConstraints="NO" id="yGX-yh-GGm">
+                                                                            <rect key="frame" x="12" y="12" width="24" height="24.5"/>
+                                                                            <color key="tintColor" systemColor="secondaryLabelColor"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="24" id="OS3-E1-aZC"/>
+                                                                                <constraint firstAttribute="width" secondItem="yGX-yh-GGm" secondAttribute="height" id="SKl-RL-F00"/>
+                                                                            </constraints>
+                                                                        </imageView>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18:15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lO-tA-zS4" userLabel="Time Label">
+                                                                            <rect key="frame" x="48" y="12" width="36.5" height="24.5"/>
+                                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                                            <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                    <directionalEdgeInsets key="directionalLayoutMargins" top="12" leading="12" bottom="12" trailing="0.0"/>
+                                                                </stackView>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9uG-7p-qGN" userLabel="Idioma Stack View">
+                                                                    <rect key="frame" x="277.5" y="0.0" width="96.5" height="48.5"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Legendado" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qXl-KI-uL6" userLabel="Tipo Label">
+                                                                            <rect key="frame" x="12" y="12" width="72.5" height="24.5"/>
+                                                                            <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
+                                                                            <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                    <directionalEdgeInsets key="directionalLayoutMargins" top="12" leading="12" bottom="12" trailing="12"/>
+                                                                </stackView>
                                                             </subviews>
-                                                            <directionalEdgeInsets key="directionalLayoutMargins" top="12" leading="12" bottom="12" trailing="12"/>
                                                         </stackView>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="J2z-E0-zq9" firstAttribute="top" secondItem="Jvy-C4-IWu" secondAttribute="top" id="CnL-Di-N7b"/>
-                                                        <constraint firstAttribute="trailing" secondItem="J2z-E0-zq9" secondAttribute="trailing" id="UYF-Cx-OAt"/>
-                                                        <constraint firstAttribute="bottom" secondItem="J2z-E0-zq9" secondAttribute="bottom" id="Zls-PU-8wE"/>
-                                                        <constraint firstItem="J2z-E0-zq9" firstAttribute="leading" secondItem="Jvy-C4-IWu" secondAttribute="leading" id="ut0-tS-YhO"/>
+                                                        <constraint firstItem="3O5-Wx-V7r" firstAttribute="leading" secondItem="LgQ-w8-0Uu" secondAttribute="leading" id="FvZ-WP-lA7"/>
+                                                        <constraint firstAttribute="bottom" secondItem="3O5-Wx-V7r" secondAttribute="bottom" id="ops-hS-w12"/>
+                                                        <constraint firstAttribute="trailing" secondItem="3O5-Wx-V7r" secondAttribute="trailing" id="vnh-B4-jhc"/>
+                                                        <constraint firstItem="3O5-Wx-V7r" firstAttribute="top" secondItem="LgQ-w8-0Uu" secondAttribute="top" id="xyW-vg-xfr"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <outlet property="horarioSessionLabel" destination="63P-TW-WMN" id="tc5-vq-q5W"/>
-                                                    <outlet property="tipoSessionLabel" destination="kMG-EW-9FX" id="7Vu-zS-u6E"/>
+                                                    <outlet property="timeLabel" destination="2lO-tA-zS4" id="n2C-fz-Suq"/>
+                                                    <outlet property="tipoLabel" destination="qXl-KI-uL6" id="6bD-ZW-vj4"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -126,12 +137,12 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="tableView" destination="SEh-jU-oO7" id="4VH-nb-6nM"/>
+                        <outlet property="tableView" destination="hQR-3e-glc" id="Q4L-vd-bxl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="35" y="94"/>
+            <point key="canvasLocation" x="-494" y="13"/>
         </scene>
     </scenes>
     <resources>
@@ -144,6 +155,9 @@
         </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

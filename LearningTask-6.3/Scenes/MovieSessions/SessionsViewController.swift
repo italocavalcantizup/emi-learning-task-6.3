@@ -7,35 +7,24 @@
 
 import UIKit
 
-class SessionsViewController: UITableViewController {
+class SessionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var sessions: [Sessions]? {
-        didSet {
-            guard isViewLoaded, let _ = sessions else { return }
-        }
-    }
+    @IBOutlet weak var tableView: UITableView!
     
-    var selectedMovie: Movie! {
-        didSet {
-            guard isViewLoaded, let selectedMovie = selectedMovie else { return }
-            tableView.tableHeaderView = TableHeaderView.build(from: selectedMovie)
-        }
-    }
+    var sessions: [Sessions]?
+    
+    var selectedMovie: Movie?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if let selectedMovie = selectedMovie {
-            tableView.tableHeaderView = TableHeaderView.build(from: selectedMovie)
-        }
-        configurarHeaderSection()
+        configurarTableView()
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sessions?[section].commingSessions.count ?? 0
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SessionCell", for: indexPath) as? SessionsViewCell else {
             fatalError("Não foi possível obter célula para a lista de sessões")
         }
@@ -44,15 +33,15 @@ class SessionsViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return sessions?.count ?? 0
     }
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: TableSectionHeaderView.reuseId) as? TableSectionHeaderView else {
             fatalError("Não foi possível obter célula para a lista de sessões")
         }
@@ -61,9 +50,15 @@ class SessionsViewController: UITableViewController {
         return header
     }
     
-    func configurarHeaderSection() {
+    func configurarTableView() {
+        if let selectedMovie = selectedMovie {
+            tableView.tableHeaderView = TableHeaderView.build(from: selectedMovie)
+        }
         tableView.register(TableSectionHeaderView.self, forHeaderFooterViewReuseIdentifier: TableSectionHeaderView.reuseId)
         tableView.sectionHeaderHeight = TableSectionHeaderView.heightConstante
+        
+        tableView.delegate = self
+        tableView.dataSource = self
     }
   
 }
